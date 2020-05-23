@@ -1,8 +1,16 @@
 #pragma once
 #include <vector>
-#include <limits>
 
-int maxOfVector(const std::vector<int>& vec) {
-    // TODO: Implement me :)
-    return {};
+int maxOfVector(const std::vector<int> &vec)
+{
+    int maxValue = vec.front();
+    for (auto &vectorElement : vec)
+    {
+        if (vectorElement > maxValue)
+        {
+            maxValue = vectorElement;
+        }
+    }
+
+    return maxValue;
 }
