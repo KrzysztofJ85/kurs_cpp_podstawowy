@@ -3,5 +3,10 @@
 #include <memory>
 #include <vector>
 
-std::vector<std::shared_ptr<int>> generate(const int count);
-void print(const std::vector<std::shared_ptr<int>>& vec);
+typedef std::vector< std::shared_ptr<int> > VectorSPtr;
+
+VectorSPtr generate(int count);
+void print(const VectorSPtr& vec);
+void add10(const VectorSPtr& vec);
+void sub10(int* const pItem);
+void sub10(const VectorSPtr& vec);

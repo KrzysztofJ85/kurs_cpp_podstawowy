@@ -2,9 +2,8 @@
 
 #include <iostream>
 
-std::vector<std::shared_ptr<int>> generate(const int count)  // która wygeneruje wektor współdzielonych wskaźników na liczby od 0 do count
-{
-    std::vector<std::shared_ptr<int>> vec;
+VectorSPtr generate(int count) {
+    VectorSPtr vec;
     vec.reserve(count);
     for (size_t i = 0; i < count; ++i) {
         vec.emplace_back(std::make_shared<int>(i));
@@ -12,9 +11,28 @@ std::vector<std::shared_ptr<int>> generate(const int count)  // która wygeneruj
     return vec;
 }
 
-void print(const std::vector<std::shared_ptr<int>>& vec)  //która wypisze wszystkie elementy ze wskaźników wektora
-{
+void print(const VectorSPtr& vec) {
     for (const auto& element : vec) {
         std::cout << *element << '\n';
+    }
+}
+
+void add10(const VectorSPtr& vec) {
+    for (auto& pItem : vec) {
+        if (pItem) {
+            *pItem += 10;
+        }
+    }
+}
+
+void sub10(int* const pItem) {
+    if (pItem) {
+        *pItem -= 10;
+    }
+}
+
+void sub10(const VectorSPtr& vec) {
+    for (auto& pItem : vec) {
+        sub10(pItem.get());
     }
 }
